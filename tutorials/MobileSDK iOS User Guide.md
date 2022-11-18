@@ -5,16 +5,16 @@ Revision Date: **November 08, 2022**
 
 ## Mobile SDK overview
 
-The SPiDR/Kandy Link Mobile Software Development Kit (SDK) defines a library implementation supporting SPiDR platform features like registration, notification, call management, instant message, presence management, and WebRTC on iOS. You can use this library implementation to integrate SPiDR/Kandy Link services and WebRTC into your native mobile applications to create new, innovative user experiences.
+The Ribbon WebRTC Mobile Software Development Kit (SDK) defines a library implementation supporting Ribbon WebRTC Gateway platform features like registration, notification, call management, instant message, presence management, and WebRTC on iOS. You can use this library implementation to integrate Ribbon WebRTC Gateway services and WebRTC into your native mobile applications to create new, innovative user experiences.
 
 The Mobile SDK has the following characteristics:
 
-* supports REST over HTTP/HTTPS for integration with the presentation layer of SPiDR/Kandy Link
+* supports REST over HTTP/HTTPS for integration with the presentation layer of Ribbon WebRTC Gateway
 * supports WebSocket for notification
 * built and distributed as a standard library structure for easy use in mobile applications
 * most features are implemented based on factory and singleton design patterns
-* classes contain a prefix "SM" ("SPiDR Mobile") to prevent conflicts with developer classes
-* access to REST APIs provided by Ribbon's Kandy platform
+* classes contain a prefix "SM" to prevent conflicts with developer classes
+* access to REST APIs provided by Ribbon's WebRTC Gateway platform
 
 See [Appendix A: High-level Mobile SDK structure](#appendix-a-high-level-mobile-sdk-structure) for a high-level view of the Mobile SDK and its sub-modules.
 
@@ -32,7 +32,7 @@ This document provides help getting started developing your mobile application u
 The following items need to be complete prior to beginning work on your application:
 
 * Your Xcode development environment is set up and ready for new projects.
-* You know the IP address and port of the SPiDR/Kandy Link server.
+* You know the IP address and port of the Ribbon WebRTC Gateway server.
 
 <div class="page-break" />
 
@@ -78,19 +78,19 @@ end
 
 2. Go to project folder via command line and run "pod install" command and wait for cocoapods to finish installation of MobileSDK, WebRTC frameworks and their dependencies
 
-If you have a trouble with getting latest version of Kandy Link Mobile SDK plaese run these suggested commands [here](https://gist.github.com/mbinna/4202236) in project directory where Podfile is located.
+If you have a trouble with getting latest version of Ribbon WebRTC Mobile SDK plaese run these suggested commands [here](https://gist.github.com/mbinna/4202236) in project directory where Podfile is located.
 
 #### Swift Package Manager Installation
 1. File >Add Package Dependency
 2. ![alt text](images/get_started_6.png "")
-3. Add https://github.com/Kandy-IO/kandy-link-ios-sdk.git
+3. Add https://github.com/RibbonCommunications/webrtc-ios-sdk.git
 4. ![alt text](images/get_started_7.png "")
 5. Select "Branch" with "master"
 
 #### Manual Installation
-**IMPORTANT:** This installation section applies to **Kandy Link iOS SDK** versions prior to v5.17.0. If you are using a more recent version, follow the instructions [here](?id=manual-installation-after-v5170).
+**IMPORTANT:** This installation section applies to **Ribbon WebRTC iOS SDK** versions prior to v5.17.0. If you are using a more recent version, follow the instructions [here](?id=manual-installation-after-v5170).
 
-Before those steps you need to download **Kandy Link iOS SDK** framework file from [this link](https://raw.githubusercontent.com/Kandy-IO/kandy-link-ios-sdk/$SDK_VERSION$/dist/MobileSDK_$SDK_VERSION$.zip).
+Before those steps you need to download **Ribbon WebRTC iOS SDK** framework file from [this link](https://raw.githubusercontent.com/RibbonCommunications/webrtc-ios-sdk/$SDK_VERSION$/dist/MobileSDK_$SDK_VERSION$.zip).
 
 1. Navigate to Build Phases and scroll down to Link binary with libraries.
 2. Add MobileSDK.framework under Link binary with libraries.
@@ -119,9 +119,9 @@ Before those steps you need to download **Kandy Link iOS SDK** framework file fr
 ![alt text](images/get_started_4.png "")
 
 ### Manual Installation (After v5.17.0)
-Support for XCFramework has been added to **Kandy Link iOS SDK** with the v5.17.0 release. You can install **Kandy Link iOS SDK** as XCFramework by following the steps below. (More information about XCFramework, see [link](https://help.apple.com/xcode/mac/11.4/#/dev6f6ac218b)).
+Support for XCFramework has been added to **Ribbon WebRTC iOS SDK** with the v5.17.0 release. You can install **Ribbon WebRTC iOS SDK** as XCFramework by following the steps below. (More information about XCFramework, see [link](https://help.apple.com/xcode/mac/11.4/#/dev6f6ac218b)).
 
-First of all, you must have the **Kandy Link iOS SDK** XCFramework file for installation. You can download from [this link](https://raw.githubusercontent.com/Kandy-IO/kandy-link-ios-sdk/$SDK_VERSION$/dist/MobileSDK_$SDK_VERSION$.zip).
+First of all, you must have the **Ribbon WebRTC iOS SDK** XCFramework file for installation. You can download from [this link](https://raw.githubusercontent.com/RibbonCommunications/webrtc-ios-sdk/$SDK_VERSION$/dist/MobileSDK_$SDK_VERSION$.zip).
 
 1. Go to project settings and navigate to **General**.
 2. Add **MobileSDK.xcframework** and **WebRTC.xcframework** under **Framework, Libraries, and Embedded Content** section.
@@ -203,9 +203,9 @@ To see all available configurations, see [Appendix D: Detailed Configurations](#
     configuration.userName = @"username";
     //password for authorization
     configuration.password = @"password";
-    //server IP value for SPiDR/Kandy Link
+    //server IP value for Ribbon WebRTC Gateway
     configuration.restServerIP = @"$SUBSCRIPTIONFQDN$";
-    //server port value for SPiDR/Kandy Link
+    //server port value for Ribbon WebRTC Gateway
     configuration.restServerPort = @"443";
     //logger implementation defined by application
     configuration.logger = self;
@@ -245,9 +245,9 @@ func manageConfiguration() {
     configuration.userName = "username"
     //password for authorization
     configuration.password = "password"
-    //server IP value for SPiDR/Kandy Link
+    //server IP value for Ribbon WebRTC Gateway
     configuration.restServerIP = "$SUBSCRIPTIONFQDN$"
-    //server port value for SPiDR/Kandy Link
+    //server port value for Ribbon WebRTC Gateway
     configuration.restServerPort = "443"
     //logger implementation defined by application
     configuration.logger = self
@@ -474,7 +474,7 @@ This level can be use to see only errors from Sdk. Developer can view where the 
 
 ## Registration Service
 
-MobileSDK should be registered to SPiDR/Kandy Link before using any other services.
+MobileSDK should be registered to Ribbon WebRTC Gateway before using any other services.
 
 **Note:** The Configuration parameters must be set before using registration service
 
@@ -484,11 +484,11 @@ MobileSDK should be registered to SPiDR/Kandy Link before using any other servic
 
 The `SMRegistrationApplicationDelegate` should be set to receive registration service notifications.
 
-The registration service renews registration according to the expiration time with the help of SPiDR/Kandy Link's ping messages. The `getExpirationTime` method may be called after successful registration to retrieve the expiration time (in seconds) for registration.
+The registration service renews registration according to the expiration time with the help of Ribbon WebRTC Gateway's ping messages. The `getExpirationTime` method may be called after successful registration to retrieve the expiration time (in seconds) for registration.
 
 <div class="page-break"></div>
 
-###### Example: Registering to SPiDR/Kandy Link
+###### Example: Registering to Ribbon WebRTC Gateway
 
 <!-- tabs:start -->
 
@@ -570,17 +570,17 @@ class RegistrationController: NSObject, SMRegistrationApplicationDelegate {
 
 ### Register the client with HMAC Token
 
- MobileSDK can register to SPiDR/Kandy Link server with a valid HMAC Token obtained from SPiDR/Kandy Link. You can get information on how to get HMAC Token, see [here](#appendix-e-obtaining-a-hmac-token).
+ MobileSDK can register to Ribbon WebRTC Gateway server with a valid HMAC Token obtained from Ribbon WebRTC Gateway. You can get information on how to get HMAC Token, see [here](#appendix-e-obtaining-a-hmac-token).
 
  Use the `registerToServer` method to register the client to the server with the values set in configuration. After the client is registered, the notification state will be changed to "CONNECTED". The client will try to stay in "CONNECTED" states until the client is unregistered. After registering with HMAC Token, in case the notification state is "DISCONNECTED", you must obtain a new HMAC token to register again. Because the obtained HMAC Tokens are disposable.
 
 The `SMRegistrationApplicationDelegate` should be set to receive registration service notifications.
 
-The registration service renews registration according to the expiration time with the help of SPiDR/Kandy Link's ping messages. The `getExpirationTime` method may be called after successful registration to retrieve the expiration time (in seconds) for registration.
+The registration service renews registration according to the expiration time with the help of Ribbon WebRTC Gateway's ping messages. The `getExpirationTime` method may be called after successful registration to retrieve the expiration time (in seconds) for registration.
 
 <div class="page-break"></div>
 
-###### Example: Registering to SPiDR/Kandy Link with HMAC Token
+###### Example: Registering to Ribbon WebRTC Gateway with HMAC Token
 
 <!-- tabs:start -->
 
@@ -667,9 +667,9 @@ class RegistrationController: NSObject, SMRegistrationApplicationDelegate {
 
 ### Unregister the client
 
-To stop receiving events from SPiDR/Kandy Link, client should be unregistered. When unregistration is successful, the notification state will be changed to "DISCONNECTED".
+To stop receiving events from Ribbon WebRTC Gateway, client should be unregistered. When unregistration is successful, the notification state will be changed to "DISCONNECTED".
 
-###### Example: Unregistering from SPiDR/Kandy Link
+###### Example: Unregistering from Ribbon WebRTC Gateway
 
 <!-- tabs:start -->
 
@@ -845,15 +845,15 @@ class CallController: NSObject, SMRegistrationApplicationDelegate, SMCallApplica
 
 #### Add STUN/TURN servers
 
-SPiDR/Kandy Link provides TURN server support for media relay between two WebRTC endpoints in core version 3.0 and later. The ICEServers property in the SMConfiguration class is used to store the ICE servers list; more than one ICEServer can exist in this property.
+Ribbon WebRTC Gateway provides TURN server support for media relay between two WebRTC endpoints in core version 3.0 and later. The ICEServers property in the SMConfiguration class is used to store the ICE servers list; more than one ICEServer can exist in this property.
 
-##### Add SPiDR's (Kandy Link) TURN server
+##### Add Ribbon WebRTC Gateway TURN server
 
-After registration, the Mobile SDK gets default credentials from SPiDR/Kandy Link for the TURN servers and updates the defaultICEUsername and defaultICEPassword configuration properties. The list of ICEServers and their credentials are added to the PeerConnection when creating a call.
+After registration, the Mobile SDK gets default credentials from Ribbon WebRTC Gateway for the TURN servers and updates the defaultICEUsername and defaultICEPassword configuration properties. The list of ICEServers and their credentials are added to the PeerConnection when creating a call.
 
-The following code sample will request TURN server credentials from SPiDR/Kandy Link and update the configuration instance.
+The following code sample will request TURN server credentials from Ribbon WebRTC Gateway and update the configuration instance.
 
-**Note:** If your SPiDR/Kandy Link core version does not have TURN Server support, adding a TURN server without a username and password will cause the registration request to fail.
+**Note:** If your Ribbon WebRTC Gateway core version does not have TURN Server support, adding a TURN server without a username and password will cause the registration request to fail.
 
 ###### Example: Adding STUN/TURN server
 
@@ -884,7 +884,7 @@ SMConfiguration.getInstance().iceServers = servers
 
 ##### Add an external TURN/STUN server
 
-You also have the option of using external TURN/STUN servers while establishing calls rather than SPiDR's (Kandy Link) TURN server(s). The ICEServers property will store the address and username/password for the server(s).
+You also have the option of using external TURN/STUN servers while establishing calls rather than Ribbon WebRTC Gateway TURN server(s). The ICEServers property will store the address and username/password for the server(s).
 
 Use the addICEServer:username:password: method of the ICEServers object to define credentials.
 
@@ -1059,7 +1059,7 @@ func establishCallFailed(_ call: SMOutgoingCallDelegate, withError error: SMMobi
 
 #### Receive an incoming call
 
-When incoming call received from SPiDR/Kandy Link, `SMCallApplicationDelegate` will be notified via `incomingCall` method. Incoming call can be accepted, rejected, ignored or forwarded to another user. When call is ignored, delegate will not be notified about that call anymore. If incoming call will be accepted, `localVideoView` and `remoteVideoView` should be assigned to related views.
+When incoming call received from Ribbon WebRTC Gateway, `SMCallApplicationDelegate` will be notified via `incomingCall` method. Incoming call can be accepted, rejected, ignored or forwarded to another user. When call is ignored, delegate will not be notified about that call anymore. If incoming call will be accepted, `localVideoView` and `remoteVideoView` should be assigned to related views.
 
 <div class="page-break"></div>
 
@@ -1358,8 +1358,8 @@ func endCallFailed(_ call: SMCallDelegate, withError error: SMMobileError) {
 
 #### End call with reason
 
-Applications can use the `endCallWithReason` API to send the end call reason to SPiDR/Kandy Link, then SPiDR/Kandy Link will send message with the reason to the remote user. The remote user gets the reason using the `callStatusChanged` API.
-If the call end reason string length exceeds the character limitation defined in SPiDR/Kandy Link Core, then SPiDR/Kandy Link Core will not send the excess characters.
+Applications can use the `endCallWithReason` API to send the end call reason to Ribbon WebRTC Gateway, then Ribbon WebRTC Gateway will send message with the reason to the remote user. The remote user gets the reason using the `callStatusChanged` API.
+If the call end reason string length exceeds the character limitation defined in Ribbon WebRTC Gateway Core, then Ribbon WebRTC Gateway Core will not send the excess characters.
 
 <div class="page-break"></div>
 
@@ -1415,7 +1415,7 @@ func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
 
 #### Supported call end reasons
 
-When an endCall notification is received from SPiDR/Kandy Link, the Mobile SDK forwards the status code (statusCode) and status reason (reasonText) to the application layer, informing the user why the call has ended.
+When an endCall notification is received from Ribbon WebRTC Gateway, the Mobile SDK forwards the status code (statusCode) and status reason (reasonText) to the application layer, informing the user why the call has ended.
 
 Mobile SDK-specific status codes and reasons sent to the application layer include:
 
@@ -2297,7 +2297,7 @@ func changeVideoResolutionAndPosition() {
 
 #### Send DTMF (Dual-Tone Multi-Frequency) signals
 
-The Mobile SDK supports sending Dual-Tone Multi-Frequency (DTMF) signals to an Interactive Voice Response (IVR) system via the SPiDR/Kandy Link Media Broker. This allows callers to enter passcodes on active or ringing calls. Available keys for tones include 0-9, *, #, A, B, C, and D, as outlined in RFC 4733. When remote party does't suport out-of-band DTMF, the API method will return false.
+The Mobile SDK supports sending Dual-Tone Multi-Frequency (DTMF) signals to an Interactive Voice Response (IVR) system via the Ribbon WebRTC Gateway Media Broker. This allows callers to enter passcodes on active or ringing calls. Available keys for tones include 0-9, *, #, A, B, C, and D, as outlined in RFC 4733. When remote party does't suport out-of-band DTMF, the API method will return false.
 
 **Note:** This feature only provides the functionality for sending DTMF signals. It does not include the functionality for getting keypad input or for playing key press volume.
 
@@ -2705,7 +2705,7 @@ If the receiving party prefers the information that it has successfully received
 
 Possible values of the ringingFeedbackOption configuration parameter are APP, SERVER and AUTO.
 
-When ringingFeedbackOption is SERVER, SPiDR/Kandy Link sends the Ringing notification to the caller immediately after sending the callStart notification to the callee.
+When ringingFeedbackOption is SERVER, Ribbon WebRTC Gateway sends the Ringing notification to the caller immediately after sending the callStart notification to the callee.
 
 When ringingFeedbackOption is APP, Ringing Feedback is reponsibility of application.
 
@@ -3500,7 +3500,7 @@ SMConfiguration.getInstance().audioCodecConfigurations = config
 
 #### Receive internal error notifications
 
-Applications can listen for internal error notifications between the Mobile SDK and SPiDR/Kandy Link using the `internalErrorDidOccur` callback method in the `SMRegistrationApplicationDelegate`. The error message includes the error reason and the component on which the error occurred. The following shows the possible internal error causes and their associated component tag values
+Applications can listen for internal error notifications between the Mobile SDK and Ribbon WebRTC Gateway using the `internalErrorDidOccur` callback method in the `SMRegistrationApplicationDelegate`. The error message includes the error reason and the component on which the error occurred. The following shows the possible internal error causes and their associated component tag values
 
 | Error Case         | Component Tag                                                   |
 |--------------------|---------------------------------------------------------------|
@@ -4054,7 +4054,7 @@ In order to use the push service, please contact your Ribbon channel account man
 <hr/>
 
 
-When SPiDR/Kandy Link server cannot reach to the device using websocket channel, message will be sent through APNS if implemented. Using the mobile push mechanism, communication between SPiDR/Kandy Link server  and the device can be maintained even while the application is not awake or in the case of websocket connection failure. In order to register device to the push channel and pass the message to the Mobile SDK, see [**Registering Device for Push Notifications**](#registering-device-for-push-notifications) and [**Receiving Push Notifications**](#receiving-push-notifications) sections.
+When Ribbon WebRTC Gateway server cannot reach to the device using websocket channel, message will be sent through APNS if implemented. Using the mobile push mechanism, communication between Ribbon WebRTC Gateway server  and the device can be maintained even while the application is not awake or in the case of websocket connection failure. In order to register device to the push channel and pass the message to the Mobile SDK, see [**Registering Device for Push Notifications**](#registering-device-for-push-notifications) and [**Receiving Push Notifications**](#receiving-push-notifications) sections.
 
 Starting April 30, 2020, all iPhone apps submitted to the App Store must be built with the iOS 13 SDK or later. This restricts how VoIP Push can be used. Therefore Mobile SDK support both VoIP([PushKit](https://developer.apple.com/documentation/pushkit)) and Standard([UserNotifications](https://developer.apple.com/documentation/usernotifications)) Push in order to support Call and, Gone notifications. `PushKit` notifications can wake up or launch your app and wait for app to inform `CallKit` about incoming call, which provides VoIP app developers to present incoming VoIP calls like native GSM/CDMA incoming call. With iOS 13 SDK built app it is mandatory to inform `CallKit` when app receives a VoIP push. Failure to do so, iOS 13 will kill the app and after a couple of failures iOS 13 will block the app from receiving any further VoIP push notifications which means incoming calls will be blocked but outgoing calls can still be made while application is open.
 
@@ -4062,7 +4062,7 @@ For more information and restrictions about using VoIP notifications, please ref
 
 ## Registering Application For Push Services
 
-Application should be registered with its bundle ID first to be able to receive push notifications from SPiDR/Kandy Link server. Necessary information for registration step for iOS applications are listed below, please contact with system administrator and share them when needed.
+Application should be registered with its bundle ID first to be able to receive push notifications from Ribbon WebRTC Gateway server. Necessary information for registration step for iOS applications are listed below, please contact with system administrator and share them when needed.
 
 -   Application Bundle ID
 -   APNS "Auth Key" in `p8` format. (Can be found in Apple Developer Account Page - Certificates, Identifiers & Profiles)
@@ -4195,7 +4195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
 
 ### Push Service Subscription
 
-When device is registered to the APNS, `PKPushRegistryDelegate` and `UNUserNotificationCenterDelegate` will inform through delegate methods and gives push tokens which later will be used by SPiDR/Kandy Link server in order to send notifications. This token should be sent to SPiDR/Kandy Link server, later on when Mobile SDK subscribes to services, user will also subscribe to push channels of the services. Please note that, VoIP token and Standard token can not be used interchangeably.
+When device is registered to the APNS, `PKPushRegistryDelegate` and `UNUserNotificationCenterDelegate` will inform through delegate methods and gives push tokens which later will be used by Ribbon WebRTC Gateway server in order to send notifications. This token should be sent to Ribbon WebRTC Gateway server, later on when Mobile SDK subscribes to services, user will also subscribe to push channels of the services. Please note that, VoIP token and Standard token can not be used interchangeably.
 
 To be able to receive push notifications, applications must subscribe to push channels by using the  `subscribeToPushNotifications`  API of the  `SMPushService`. Fail and success calls will be transmitted through the completion block. If the registration is successful, a  `subscriptionID`  will be returned which can be used to update or remove the push subscription.
 
@@ -4786,11 +4786,11 @@ class PushModule<SMPushSubscriptionDelegate> {
 
 ## Public Request Service
 
-Sending requests via Kandylink with the parameters given in the appropriate format.
+Sending requests via Ribbon WebRTC Gateway with the parameters given in the appropriate format.
 
 ### Fetch API
 
-Kandylink needs three parameters to use this API.
+Ribbon WebRTC Gateway needs three parameters to use this API.
 
 * **RequestInfo:** RequestInfo includes the information required in the request's body to be sent
 * **ResourceURL:** ResourceURL is the information of which endpoint the request will be sent to
@@ -4936,9 +4936,9 @@ This section contains usage of all configurations that Mobile SDK provides.
     configuration.userName = @"username";
     //password for authorization
     configuration.password = @"password";
-    //server IP value for SPiDR/Kandy Link
+    //server IP value for Ribbon WebRTC Gateway
     configuration.restServerIP = @"$SUBSCRIPTIONFQDN$";
-    //server port value for SPiDR/Kandy Link
+    //server port value for Ribbon WebRTC Gateway
     configuration.restServerPort = @"443";
     //logger implementation defined by application
     configuration.logger = nil;
@@ -4948,7 +4948,7 @@ This section contains usage of all configurations that Mobile SDK provides.
     //port used in websocket connection creation
     configuration.webSocketServerPort = @"443";
 
-    //SPiDR TURN server in WebRTC's peer connection
+    //Ribbon WebRTC Gateway TURN server in WebRTC's peer connection
     SMICEServers *iceServers = [[SMICEServers alloc] init];
     [servers addICEServer:@"$TURNSERVER1$"];
     [servers addICEServer:@"$TURNSERVER2$"];
@@ -4965,7 +4965,7 @@ This section contains usage of all configurations that Mobile SDK provides.
     configuration.iceOption = ICE_TRICKLE;
 
     //Set supported call features (ringing feedback)
-    //SPiDR server must support this feature
+    //Ribbon WebRTC Gateway server must support this feature
     configuration.ringingFeedbackOption = CLIENT;
 
     //Configure WebRTC audio sessions
@@ -4996,9 +4996,9 @@ func manageConfiguration() {
     configuration.userName = "username"
     //password for authorization
     configuration.password = "password"
-    //server IP value for SPiDR/Kandy Link
+    //server IP value for Ribbon WebRTC Gateway
     configuration.restServerIP = "$SUBSCRIPTIONFQDN$"
-    //server port value for SPiDR/Kandy Link
+    //server port value for Ribbon WebRTC Gateway
     configuration.restServerPort = "443"
     //logger implementation defined by application
     configuration.logger = self
@@ -5008,7 +5008,7 @@ func manageConfiguration() {
     //port used in websocket connection creation
     configuration.webSocketServerPort  = "443"
 
-    //SPiDR TURN server in WebRTC's peer connection
+    //Ribbon WebRTC Gateway TURN server in WebRTC's peer connection
     let iceServers = SMICEServers()
     iceServers.addICEServer("$TURNSERVER1$")
     iceServers.addICEServer("$TURNSERVER2$")
@@ -5025,7 +5025,7 @@ func manageConfiguration() {
     configuration.iceOption = .trickle;
 
     //Set supported call features (ringing feedback)
-    //SPiDR server must support this feature
+    //Ribbon WebRTC Gateway server must support this feature
     configuration.ringingFeedbackOption = CLIENT;
 
     //Configure WebRTC audio sessions
@@ -5047,7 +5047,7 @@ func manageConfiguration() {
 
 ### Appendix E: Obtaining a HMAC Token
 
-HMAC Token is a token that allows you to register on the SPiDR/Kandy Link server. This section contains information about how to obtain a HMAC Token from SPiDR/Kandy Link server. In order to obtain HMAC token, the user to receive HMAC token must have the necessary settings made on the Kandy Link web portal. The adapter and authentication scheme key values obtained as a result of the settings made on the portal will be used to obtain the HMAC token. 
+HMAC Token is a token that allows you to register on the Ribbon WebRTC Gateway server. This section contains information about how to obtain a HMAC Token from Ribbon WebRTC Gateway server. In order to obtain HMAC token, the user to receive HMAC token must have the necessary settings made on the Ribbon WebRTC Gateway web portal. The adapter and authentication scheme key values obtained as a result of the settings made on the portal will be used to obtain the HMAC token. 
 
 <!-- tabs:start -->
 
