@@ -10,14 +10,14 @@
 
 ### CocoaPods
 
-[CocoaPods](https://cocoapods.org/pods/KandyLinkMobileSDK) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate *Kandy Link iOS SDK* into your Xcode project using CocoaPods, specify it in your `Podfile`:
+[CocoaPods](https://cocoapods.org/pods/KandyLinkMobileSDK) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate *Ribbon WebRTC iOS SDK* into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 ...
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'KandyLinkMobileSDK', '~> 6.8.1'
+    pod 'RibbonWebRTCSDK', '~> 6.8.1'
 end
 
 post_install do |installer|
@@ -59,9 +59,9 @@ Compatible XCode Versions :
 
 Compatible Ribbon WebRTC Gateway Server versions :
 
-* Kandy Link 4.8.1
+* WebRTC Gateway 4.8.1
 
-* Kandy Link 4.9
+* WebRTC Gateway 4.9
 
 Tested on :
 
