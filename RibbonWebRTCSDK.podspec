@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name              = 'RibbonWebRTCSDK'
-    s.version           = '6.8.1'
+    s.version           = '6.8.2'
     s.summary           = 'Ribbon WebRTC MobileSDK Framework'
     s.homepage          = 'https://github.com/RibbonCommunications/webrtc-ios-sdk'
     s.license 		    = { :type => 'MIT', :file => 'mit-license.txt'}

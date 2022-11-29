@@ -5,6 +5,8 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.8.2 - 2022-29-11
+
 ## 6.8.1 - 2022-08-11
 ### Fixed
 - Custom SIP headers return bug is fixing. `KAE-1455`
