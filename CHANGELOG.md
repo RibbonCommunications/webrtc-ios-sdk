@@ -5,7 +5,7 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
-## 6.8.3 - 2022-01-12
+## 6.8.4 - 2022-01-12
 
 ## 6.8.1 - 2022-08-11
 ### Fixed

@@ -17,7 +17,7 @@
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.8.3'
+    pod 'RibbonWebRTCSDK', '~> 6.8.4'
 end
 
 post_install do |installer|
