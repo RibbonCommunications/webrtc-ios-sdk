@@ -17,7 +17,7 @@
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.8.2'
+    pod 'RibbonWebRTCSDK', '~> 6.8.3'
 end
 
 post_install do |installer|
@@ -69,4 +69,3 @@ Tested on :
 
 ## Known Issues
 
-* Build issues on systems using Apple Silicon M1 chip.
