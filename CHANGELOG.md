@@ -5,6 +5,14 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+
+## 6.9.0 - 2022-26-12
+### Fixed
+- Initiated state fix. `KAE-1477`
+- Crash issue when Register `KAE-1473`
+- Crash issue when Unregister `KAE-1474`
+
+
 ## 6.8.1 - 2022-08-11
 ### Fixed
 - Custom SIP headers return bug is fixing. `KAE-1455`
