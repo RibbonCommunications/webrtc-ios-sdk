@@ -6,6 +6,8 @@ Ribbon WebRTC iOS SDK change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
 
+## 6.10.0 - 2023-24-01
+
 ## 6.9.0 - 2022-26-12
 ### Fixed
 - Initiated state fix. `KAE-1477`
