@@ -14,7 +14,7 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">MobileSDK 6.10.0 </a>
+				<a href="../index.html">MobileSDK 6.11.0 </a>
 			</h1>
 
 			<p id="developer-home">
@@ -114,9 +114,17 @@
 		
 		<option value="//api/name/sendDTMF:">- sendDTMF:</option>
 		
+		<option value="//api/name/setAudioSourceType:">- setAudioSourceType:</option>
+		
 		<option value="//api/name/setCaptureDevice:withVideoResolution:completionHandler:">- setCaptureDevice:withVideoResolution:completionHandler:</option>
 		
 		<option value="//api/name/setCustomParameters:">- setCustomParameters:</option>
+		
+		<option value="//api/name/setExternalAudioSource:completionHandler:">- setExternalAudioSource:completionHandler:</option>
+		
+		<option value="//api/name/setExternalAudioSourceWithFile:completionHandler:">- setExternalAudioSourceWithFile:completionHandler:</option>
+		
+		<option value="//api/name/setExternalAudioSourceWithFile:repeatFor:completionHandler:">- setExternalAudioSourceWithFile:repeatFor:completionHandler:</option>
 		
 		<option value="//api/name/setExternalVideoSource:completionHandler:">- setExternalVideoSource:completionHandler:</option>
 		
@@ -1417,6 +1425,207 @@ Applications that want to use this API should set setVideoSourceType to EXTERNAL
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/setExternalAudioSource:completionHandler:" title="setExternalAudioSource:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setExternalAudioSource:completionHandler:">&ndash;&nbsp;setExternalAudioSource:completionHandler:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Allow applications to set audio buffers as external audio source.</p>
+
+<p>SDK can transmit audio buffer to remote peer if application uses this API.
+Applications that want to use this API should set setAudioSourceType to EXTERNAL_AUDIO</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setExternalAudioSource:(CMSampleBufferRef _Nullable)<em>audioBuffer</em> completionHandler:(void ( ^ _Nullable ) ( SMMobileError *_Nullable error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>audioBuffer</code></th>
+						<td><p>will be use transmit to remote peer(s)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>that returns error</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>6.11.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SMCallDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setExternalAudioSourceWithFile:completionHandler:" title="setExternalAudioSourceWithFile:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setExternalAudioSourceWithFile:completionHandler:">&ndash;&nbsp;setExternalAudioSourceWithFile:completionHandler:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Allows applications to set the audio file as external audio source.</p>
+
+<p>SDK can transmit audio file to remote peer if application uses this API.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setExternalAudioSourceWithFile:(NSURL *_Nonnull)<em>filePath</em> completionHandler:(void ( ^ _Nullable ) ( SMMobileError *_Nullable error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>File path of the audio file to be used as the audio source.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>An error object that contains information, or nil if the transmission completed successfully.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>6.11.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SMCallDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setExternalAudioSourceWithFile:repeatFor:completionHandler:" title="setExternalAudioSourceWithFile:repeatFor:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setExternalAudioSourceWithFile:repeatFor:completionHandler:">&ndash;&nbsp;setExternalAudioSourceWithFile:repeatFor:completionHandler:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Allows applications to set the audio file as external audio source and play it for the specified times.</p>
+
+<p>SDK can transmit audio file to remote peer if application uses this API.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setExternalAudioSourceWithFile:(NSURL *_Nonnull)<em>filePath</em> repeatFor:(NSInteger)<em>times</em> completionHandler:(void ( ^ _Nullable ) ( SMMobileError *_Nullable error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>File path of the audio file to be used as the audio source.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>An error object that contains information, or nil if the transmission completed successfully.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>repeatFor</code></th>
+						<td><p>The number of times the audio file will be repeated.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>6.11.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SMCallDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/getCallId" title="getCallId"></a>
 	<h3 class="method-title"><code><a href="#//api/name/getCallId">&ndash;&nbsp;getCallId</a></code>
 <span class="task-item-suffix">required method</span></h3>
@@ -2103,6 +2312,68 @@ If EXTERNAL_VIDEO is chosen as the video source type, application must provide f
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/setAudioSourceType:" title="setAudioSourceType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAudioSourceType:">&ndash;&nbsp;setAudioSourceType:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Allows applications to set AudioSourceTypes.</p>
+
+<p>MobileSDK supports multiple audio source types. MICROPHONE is the default audio source type.
+Alternatively, applications can select EXTERNAL_AUDIO and insert audio buffers as their desire.
+If EXTERNAL_AUDIO is chosen as the audio source type, application must provide buffers by using setExternalAudioSource API.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setAudioSourceType:(SMAudioSourceTypes)<em>audioSourceType</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>audioSourceType</code></th>
+						<td><p><a href="../Constants/SMAudioSourceTypes.html">SMAudioSourceTypes</a> enum</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>6.11.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SMCallDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -2118,7 +2389,7 @@ If EXTERNAL_VIDEO is chosen as the video source type, application must provide f
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2023 GENBAND. All rights reserved. Updated: 2023-01-24</p>
+						<p class="copyright">Copyright &copy; 2023 GENBAND. All rights reserved. Updated: 2023-02-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

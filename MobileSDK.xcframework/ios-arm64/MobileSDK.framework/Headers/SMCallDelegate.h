@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.10.0
+ * @version: 6.11.0
  *
  */
 
@@ -17,6 +17,7 @@
 #import "SMCallTypes.h"
 #import "SMCodecType.h"
 #import "SMVideoSourceTypes.h"
+#import "SMAudioSourceTypes.h"
 
 
 @class SMCallState;
@@ -208,7 +209,44 @@
  * @since 6.4.0
 */
 - (void) setExternalVideoSource:(CVImageBufferRef _Nullable )imageBuffer completionHandler: (void (^_Nullable)(SMMobileError * _Nullable error)) handler;
-;
+
+/**
+ * @brief Allow applications to set audio buffers as external audio source.
+ *
+ * SDK can transmit audio buffer to remote peer if application uses this API.
+ * Applications that want to use this API should set setAudioSourceType to EXTERNAL_AUDIO
+ *
+ * @param audioBuffer will be use transmit to remote peer(s)
+ * @param completionHandler that returns error 
+ * @since 6.11.0
+*/
+- (void) setExternalAudioSource:(CMSampleBufferRef _Nullable)audioBuffer completionHandler: (void (^_Nullable)(SMMobileError * _Nullable error)) handler;
+
+/**
+ * @brief Allows applications to set the audio file as external audio source.
+ *
+ * SDK can transmit audio file to remote peer if application uses this API.
+ *
+ * @param filePath File path of the audio file to be used as the audio source.
+ * @param completionHandler An error object that contains information, or nil if the transmission completed successfully.
+ * @since 6.11.0
+*/
+- (void) setExternalAudioSourceWithFile:(NSURL *_Nonnull)filePath
+                      completionHandler:(void (^ _Nullable)(SMMobileError * _Nullable error))handler;
+
+/**
+ * @brief Allows applications to set the audio file as external audio source and play it for the specified times.
+ *
+ * SDK can transmit audio file to remote peer if application uses this API.
+ *
+ * @param filePath File path of the audio file to be used as the audio source.
+ * @param repeatFor The number of times the audio file will be repeated.
+ * @param completionHandler An error object that contains information, or nil if the transmission completed successfully.
+ * @since 6.11.0
+*/
+- (void) setExternalAudioSourceWithFile:(NSURL *_Nonnull)filePath
+                          repeatFor:(NSInteger)times
+                      completionHandler:(void (^ _Nullable)(SMMobileError * _Nullable error))handler;
 
 /**
  * @brief Returns callId that related with SIP session id
@@ -351,5 +389,16 @@
  */
 - (void) setVideoSourceType:(SMVideoSourceTypes) videoSourceType;
 
+/**
+ * @brief Allows applications to set AudioSourceTypes.
+ * 
+ * MobileSDK supports multiple audio source types. MICROPHONE is the default audio source type.
+ * Alternatively, applications can select EXTERNAL_AUDIO and insert audio buffers as their desire.
+ * If EXTERNAL_AUDIO is chosen as the audio source type, application must provide buffers by using setExternalAudioSource API.
+ *
+ * @since 6.11.0
+ * @param audioSourceType SMAudioSourceTypes enum
+ */
+- (void) setAudioSourceType:(SMAudioSourceTypes)audioSourceType;
 
 @end

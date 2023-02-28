@@ -5,6 +5,9 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.11.0 - 2023-28-02
+### Added
+- Streaming from external audio sources support added. `KAE-1481`
 
 ## 6.10.0 - 2023-24-01
 
