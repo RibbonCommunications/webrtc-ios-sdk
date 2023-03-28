@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
     s.name              = 'RibbonWebRTCSDK'
-    s.version           = '6.11.0'
+    s.version           = '6.12.0'
     s.summary           = 'Ribbon WebRTC MobileSDK Framework'
     s.homepage          = 'https://github.com/RibbonCommunications/webrtc-ios-sdk'
     s.license 		    = { :type => 'MIT', :file => 'mit-license.txt'}
     s.author            = { 'Name' => 'dpd-tur.MobileSDK@orioninc.com' }
     s.platform          = :ios
     s.source            = { :git => 'https://github.com/RibbonCommunications/webrtc-ios-sdk.git', :tag => s.version}
-    s.dependency  'RibbonWebRTC' , '~> 0.97.1'
+    s.dependency  'RibbonWebRTC' , '~> 0.110.0'
     s.ios.deployment_target   = '11.0'
     s.library = ['c++','icucore','z']
     s.ios.frameworks = ['AVFoundation','SystemConfiguration','GLKit','VideoToolbox','AudioToolbox','PushKit']
