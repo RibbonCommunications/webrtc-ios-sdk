@@ -1,7 +1,7 @@
 # Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **March 27, 2023**
+Revision Date: **May 2, 2023**
 
 ## Mobile SDK overview
 
@@ -220,8 +220,6 @@ To see all available configurations, see [Appendix D: Detailed Configurations](#
     SMICEServers * servers = [[SMICEServers alloc] init];
     [servers addICEServer:@"$TURNSERVER1$"];
     [servers addICEServer:@"$STUNSERVER1$"];
-    [servers addICEServer:@"$TURNSERVER2$"];
-    [servers addICEServer:@"$STUNSERVER2$"];
     [configuration setICEServers:servers];
 }
 ```
@@ -262,8 +260,6 @@ func manageConfiguration() {
     let servers = SMICEServers()
     iceServers.addICEServer("$TURNSERVER1$")
     iceServers.addICEServer("$STUNSERVER1$")
-    iceServers.addICEServer("$TURNSERVER2$")
-    iceServers.addICEServer("$STUNSERVER2$")
     configuration.iceServers = servers
 }
 ```
@@ -865,8 +861,6 @@ The following code sample will request TURN server credentials from Ribbon WebRT
 SMICEServers *servers = [[SMICEServers alloc] init];
 [servers addICEServer:@"$TURNSERVER1$"];
 [servers addICEServer:@"$STUNSERVER1$"];
-[servers addICEServer:@"$TURNSERVER2$"];
-[servers addICEServer:@"$STUNSERVER2$"];
 [[SMConfiguration getInstance] setICEServers:servers];
 ```
 
@@ -876,8 +870,6 @@ SMICEServers *servers = [[SMICEServers alloc] init];
 var servers = SMIceServers()
 servers.addICEServer("$TURNSERVER1$")
 servers.addICEServer("$STUNSERVER1$")
-servers.addICEServer("$TURNSERVER2$")
-servers.addICEServer("$STUNSERVER2$")
 SMConfiguration.getInstance().iceServers = servers
 ```
 <!-- tabs:end -->
@@ -926,10 +918,6 @@ SMConfiguration.getInstance().iceServers?.addICEServer("$STUNSERVER1$")
 SMICEServers *servers = [[SMConfiguration getInstance] SMICEServers];
 //to use UDP transport
 [servers addICEServer:@"$TURNSERVER1$" username:@"username" password:@"password"];
-//to use TCP transport
-[servers addICEServer:@"$TURNSERVER2$" username:@"username" password:@"password"];
-//to use TLS transport
-[servers addICEServer:@"$TURNSERVER2$" username:@"username" password:@"password"];
 ```
 
 #### ** Swift Code **
@@ -938,10 +926,6 @@ SMICEServers *servers = [[SMConfiguration getInstance] SMICEServers];
 var servers = SMConfiguration.getInstance().iceServers
 //to use UDP transport
 servers.addICEServer("$TURNSERVER1$", username: "username" password: "password")
-//to use TCP transport
-servers.addICEServer("$TURNSERVER2$", username: "username" password: "password")
-//to use TLS transport
-servers.addICEServer("$TURNSERVER2$", username: "username" password: "password")
 ```
 <!-- tabs:end -->
 
@@ -5136,9 +5120,7 @@ This section contains usage of all configurations that Mobile SDK provides.
     //Ribbon WebRTC Gateway TURN server in WebRTC's peer connection
     SMICEServers *iceServers = [[SMICEServers alloc] init];
     [servers addICEServer:@"$TURNSERVER1$"];
-    [servers addICEServer:@"$TURNSERVER2$"];
     [servers addICEServer:@"$STUNSERVER1$"];
-    [servers addICEServer:@"$STUNSERVER2$"];
 
     configuration.ICEServers = iceServers;
 
@@ -5196,9 +5178,7 @@ func manageConfiguration() {
     //Ribbon WebRTC Gateway TURN server in WebRTC's peer connection
     let iceServers = SMICEServers()
     iceServers.addICEServer("$TURNSERVER1$")
-    iceServers.addICEServer("$TURNSERVER2$")
     iceServers.addICEServer("$STUNSERVER1$")
-    iceServers.addICEServer("$STUNSERVER2$")
 
     configuration.iceServers = iceServers;
 
@@ -5244,8 +5224,8 @@ HMAC Token is a token that allows you to register on the Ribbon WebRTC Gateway s
 - (void) obtainHMACToken
 {
     // Sample required variables
-    NSString *server = @"lab.kandy.io";
-    NSString *user = @"joedoey@kandy.io";
+    NSString *server = @"lab.ribbon.com";
+    NSString *user = @"joedoey@ribbon.com";
     NSString *adapter = @"SampleAdapter";
     NSString *schemeKey = @"SampleSchemeKey";
 
@@ -5275,7 +5255,7 @@ HMAC Token is a token that allows you to register on the Ribbon WebRTC Gateway s
             
             if (httpResponse.statusCode != 201) {
                 NSError *error = [NSError
-                                  errorWithDomain:@"KandyIO"
+                                  errorWithDomain:@"Ribbon"
                                   code:1
                                   userInfo:@{
                                       NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Fail response returned from server. Response code: %ld",(long)httpResponse.statusCode]
@@ -5298,7 +5278,7 @@ HMAC Token is a token that allows you to register on the Ribbon WebRTC Gateway s
     
     // Split the user address
     NSString *subscriberId = [[user componentsSeparatedByString:@"@"] firstObject]; // joedoey
-    NSString *organizationId = [[user componentsSeparatedByString:@"@"] lastObject]; // kandy.io
+    NSString *organizationId = [[user componentsSeparatedByString:@"@"] lastObject]; // ribbon.com
 
     // Create request body
     // Request body format:
@@ -5306,7 +5286,7 @@ HMAC Token is a token that allows you to register on the Ribbon WebRTC Gateway s
     //    "authenticationTokenRequest":
     //        {
     //            "subscriberId":"joedoey",
-    //            "organizationId":"kandy.io"
+    //            "organizationId":"ribbon.com"
     //        }
     //  }
     NSDictionary *subscriberDict = @{ @"subscriberId": subscriberId, @"organizationId": organizationId };
@@ -5350,8 +5330,8 @@ import CryptoUtils
 
 func obtainHMACToken() {
     // Sample required variables
-    let server = "lab.kandy.io"
-    let user = "joedoey@kandy.io"
+    let server = "lab.ribbon.com"
+    let user = "joedoey@ribbon.com"
     let adapter = "SampleAdapter"
     let schemeKey = "SampleSchemeKey"
 
@@ -5406,7 +5386,7 @@ func createRequestBody(_ user: String) -> Data? {
 
     // Split the user address
     let subscriberId = user.components(separatedBy: "@").first // joedoey
-    let organizationId = user.components(separatedBy: "@").last // kandy.io
+    let organizationId = user.components(separatedBy: "@").last // ribbon.com
     
     // Create request body
     // Request body format:
@@ -5414,7 +5394,7 @@ func createRequestBody(_ user: String) -> Data? {
     //    "authenticationTokenRequest":
     //        {
     //            "subscriberId":"joedoey",
-    //            "organizationId":"kandy.io"
+    //            "organizationId":"ribbon.com"
     //        }
     //  }
     let subscriberDict = [

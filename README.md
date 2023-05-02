@@ -17,7 +17,7 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.12.0'
+    pod 'RibbonWebRTCSDK', '~> 6.13.0'
 end
 
 post_install do |installer|
@@ -45,7 +45,7 @@ The information about tutorials and documents can be found in the links below
 
 * Documents: [API Docs](https://ribboncommunications.github.io/webrtc-ios-sdk/docs)
 
-* Tutorials: Choose your configuration ( [US](https://ribboncommunications.github.io/webrtc-ios-sdk/tutorials/?SUBSCRIPTIONFQDN=webrtc-na.kandy.io&WEBSOCKETFQDN=webrtc-na.kandy.io&ICESERVER1=turn-na-1.kandy.io&ICESERVER2=turn-na-2.kandy.io) | [EMEA](https://ribboncommunications.github.io/webrtc-ios-sdk/tutorials/?SUBSCRIPTIONFQDN=webrtc-em.kandy.io&WEBSOCKETFQDN=webrtc-em.kandy.io&ICESERVER1=turn-em-1.kandy.io&ICESERVER2=turn-em-2.kandy.io) | [UAE](https://ribboncommunications.github.io/webrtc-ios-sdk/tutorials/?SUBSCRIPTIONFQDN=ct-webrtc.etisalat.ae&WEBSOCKETFQDN=ct-webrtc.etisalat.ae&ICESERVER1=ct-turn1.etisalat.ae&ICESERVER2=ct-turn2.etisalat.ae) )
+* Tutorials: Choose your configuration ( [BLUE-LAB](https://ribboncommunications.github.io/webrtc-ios-sdk/tutorials/?SUBSCRIPTIONFQDN=blue.rbbn.com&WEBSOCKETFQDN=blue.rbbn.com&ICESERVER1=turn-blue.rbbn.com) )
 
 ## Compatibility
 
