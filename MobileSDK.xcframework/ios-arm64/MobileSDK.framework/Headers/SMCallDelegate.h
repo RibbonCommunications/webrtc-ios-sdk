@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.13.0
+ * @version: 6.14.0
  *
  */
 
@@ -209,18 +209,6 @@
  * @since 6.4.0
 */
 - (void) setExternalVideoSource:(CVImageBufferRef _Nullable )imageBuffer completionHandler: (void (^_Nullable)(SMMobileError * _Nullable error)) handler;
-
-/**
- * @brief Allow applications to set audio buffers as external audio source.
- *
- * SDK can transmit audio buffer to remote peer if application uses this API.
- * Applications that want to use this API should set setAudioSourceType to EXTERNAL_AUDIO
- *
- * @param audioBuffer will be use transmit to remote peer(s)
- * @param completionHandler that returns error 
- * @since 6.11.0
-*/
-- (void) setExternalAudioSource:(CMSampleBufferRef _Nullable)audioBuffer completionHandler: (void (^_Nullable)(SMMobileError * _Nullable error)) handler;
 
 /**
  * @brief Allows applications to set the audio file as external audio source.

@@ -1,7 +1,7 @@
 # Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **May 2, 2023**
+Revision Date: **May 30, 2023**
 
 ## Mobile SDK overview
 
@@ -3921,11 +3921,9 @@ It is recommended to call this method every 10 seconds as long as call continues
 
 #### Use External Audio Source
 
-The Mobile SDK can stream external audio sources to the remote peer(s) during a call instead of a device microphone.
+The Mobile SDK can stream external audio sources to the remote peer(s) during a call instead of a devices default audio input.
 
-**Note:** External audio can be sent to remote peers in two different ways, simple or advanced solution.
-
-##### 1. API definition for Simple Solution
+##### API definition for External Audio transmission
 
 The following API provides a simpler use for external audio transmission.
 
@@ -3941,7 +3939,7 @@ Also, can specify how many times to repeat, with 'repeatFor' parameter.
 
 The application does not need to take any configuration before calling this API. Everything will be set up automatically.
 
-completionHandler may returns error or nil. If nil returns, audio transmission is complete. After the audio transmission is completed, returns back to the microphone input automatically.
+completionHandler may returns error or nil. If nil returns, audio transmission is complete. After the audio transmission is completed, returns back to the default device input automatically.
 
 ```objectivec
 /**
@@ -3992,16 +3990,14 @@ call.setExternalAudioSourceWithFile(externalAudioURL, repeatFor: 3, completionHa
 ```
 <!-- tabs:end -->
 
-##### 2. API definition for Advanced Solution
+##### API definition for Audio Input
 
-The following APIs provide advanced handling for external audio transmission.
-
-The application can add an external audio source by changing the audio input type and continuously providing audio buffers.
+The following APIs provide change audio input between External Audio and Internal Audio.
 
 -----------
 ###### SMAudioSourceTypes(enum)
 Options that specify audio source type.
-* Microphone: Specifies the device's default audio source, microphone.
+* Internal Audio: Specifies the device's default audio source.
 * External Audio: Specifies that the application will use external audio as the audio source.
 
 ```objectivec
@@ -4013,26 +4009,24 @@ Options that specify audio source type.
  * @since 6.11.0
 */
 typedef NS_ENUM(NSInteger, SMAudioSourceTypes) {
-    MICROPHONE NS_SWIFT_NAME(microphone),
+    INTERNAL_AUDIO NS_SWIFT_NAME(internalAudio),
     EXTERNAL_AUDIO NS_SWIFT_NAME(externalAudio)
 };
 ```
 
 ------------
 ###### setAudioSourceType:(SMAudioSourceTypes)audioSourceType
-MobileSDK supports multiple audio source types. microphone is the default audio source type.
+MobileSDK supports multiple audio source types. internal audio is the default audio source type and external audio.
 
-Alternatively, applications can select external and insert external audio as their desire.
+When a file is provided and the necessary API call is made to transmit it to the remote peer, the audio input is automatically set as external audio. Once the media is finished, it is automatically set back to internal audio as the default. 
 
-Two sources cannot be used simultaneously for audio input because this will cause a race condition. This API must be called before all operations to prevent this, when external audio or microphone input is requested to be transmitted.
-
-In this way, the configurations for the audio input will be made as it should be, and the audio transmission will take place properly.
+If there is a need to switch from external audio to internal audio before the media is completed, the following API can be used to set the audio input as internal audio.
 
 ```objectivec
 /**
  * @brief Allows applications to set AudioSourceTypes.
  *
- * MobileSDK supports multiple audio source types. MICROPHONE is the default audio source type.
+ * MobileSDK supports multiple audio source types. INTERNAL_AUDIO is the default audio source type.
  * Alternatively, applications can select EXTERNAL_AUDIO and insert audio buffers as their desire.
  * If EXTERNAL_AUDIO is chosen as the audio source type, application must provide buffers by using setExternalAudioSource API.
  *
@@ -4050,8 +4044,8 @@ In this way, the configurations for the audio input will be made as it should be
 // External Audio Input
 [call setAudioSourceType:EXTERNAL_AUDIO];
 
-// Microphone Input
-[call setAudioSourceType:MICROPHONE];
+// Internal Audio Input
+[call setAudioSourceType:INTERNAL_AUDIO];
 ```
 
 #### ** Swift Code **
@@ -4060,53 +4054,8 @@ In this way, the configurations for the audio input will be made as it should be
 // External Audio Input
 call.setAudioSourceType(.externalAudio)
 
-// Microphone Input
-call.setAudioSourceType(.microphone)
-```
-
-<!-- tabs:end -->
-
-------------
-
-###### setExternalAudioSource:(CMSampleBufferRef)audioBuffer completionHandler:^(SMMobileError \* _Nullable error) {...}
-
-This API is a method defined under the SMCall class in the SDK. Audio from the file can be added to the call by using it from the SMCall objects created earlier. This API, takes the parameter CMSampleBufferRef inside.
-
-* CMSampleBufferRef: A CMSampleBufferRef is a Core Media object that represents a buffer of audio or video samples. It contains one or more samples, along with information about the format of the samples, such as their duration, presentation time, and format description. It is used to manage and manipulate audio and video data in iOS and macOS.
-
-If this API is called again before the previous buffer is sent to the remote peer(s), there will be no problem. The previously sent buffer will be interrupted and the new buffer will continue to be transmitted to the remote peer(s).
-
-```objectivec
-/**
- * @brief Allow applications to set Audio buffers as external audio source.
- *
- * SDK can transmit audio buffer to remote peer if application uses this API.
- * Applications that want to use this API should set setAudioSourceType to EXTERNAL_AUDIO
- *
- * @param audioBuffer Audio buffer to be used as the audio source.
- * @param completionHandler An error object that contains information about a problem.
- * @since 6.11.0
-*/
-- (void) setExternalAudioSource:(CMSampleBufferRef _Nullable)audioBuffer
-              completionHandler: (void (^_Nullable)(SMMobileError * _Nullable error)) handler;
-```
-**Usage:**
-<!-- tabs:start -->
-
-#### ** Objective-C Code **
-
-```objectivec
-[call setExternalAudioSource:buffer completionHandler:^(SMMobileError * _Nullable error) {
-    //error handling
-}];
-```
-
-#### ** Swift Code **
-
-```swift
-call.setExternalAudioSource(buffer) { error in
-    //error handling
-}
+// Internal Audio Input
+call.setAudioSourceType(.internalAudio)
 ```
 
 <!-- tabs:end -->
