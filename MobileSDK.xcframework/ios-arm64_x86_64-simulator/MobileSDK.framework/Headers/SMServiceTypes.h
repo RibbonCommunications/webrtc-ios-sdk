@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.14.0
+ * @version: 6.15.0
  *
  */
 
@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Class for getting service names for registration
  * @since 2.0.0
  */
+__attribute__((objc_runtime_name("SWIFTSMServiceTypes")))
 @interface SMServiceTypes : NSObject
 
 /**

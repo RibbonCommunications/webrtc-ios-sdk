@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.14.0
+ * @version: 6.15.0
  *
  */
 
@@ -25,6 +25,7 @@
 * The datas in this class will be used to inform CallKit after receiving each voip notification
 * - Since: 5.5.0
 */
+__attribute__((objc_runtime_name("SWIFTSMCKInfo")))
 @interface SMCKInfo: NSObject
  
 /*
@@ -61,6 +62,7 @@
  * @since 3.0.5
  * @updated 5.5.0
  **/
+__attribute__((objc_runtime_name("SWIFTSMPushService")))
 @interface SMPushService : NSObject
 
 /**

@@ -5,6 +5,11 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.15.0 - 2023-06-07
+### Changed
+- RegistrationServices module migrated to Swift. `KAE-1515`
+- PushServices module migrated to Swift. `KAE-1516`
+
 ## 6.14.0 - 2023-30-05
 ### Added
 - No change

@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.14.0
+ * @version: 6.15.0
  *
  */
 
@@ -17,6 +17,7 @@
 @class SMMobileError;
 @class SMNotificationEngine;
 
+__attribute__((objc_runtime_name("SWIFTSMRegistrationService")))
 @interface SMRegistrationService : NSObject
 
 /**
