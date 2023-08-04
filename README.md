@@ -17,7 +17,7 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.15.0'
+    pod 'RibbonWebRTCSDK', '~> 6.16.0'
 end
 
 post_install do |installer|
@@ -25,6 +25,15 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
     end
+  end
+
+  installer.aggregate_targets.each do |aggregate_target|
+    aggregate_target.user_project.native_targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['LIBRARY_SEARCH_PATHS'] = ['$(SDKROOT)/usr/lib/swift', '$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)', '$(inherited)']
+       end
+    end
+    aggregate_target.user_project.save()
   end
 end
 
