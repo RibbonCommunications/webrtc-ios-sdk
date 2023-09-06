@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.16.0
+ * @version: 6.17.0
  *
  */
 
@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, SMErrorTypes) {
     ERROR_WEBSOCKET_TIMEOUT NS_SWIFT_NAME(websocketTimeout),
     
     /** General HTTP Errors*/
-    ERROR_HTTP,
+    ERROR_HTTP NS_SWIFT_NAME(http),
     
     /** Request pending */
     ERROR_REQUEST_PENDING NS_SWIFT_NAME(requestPending) = 491,
