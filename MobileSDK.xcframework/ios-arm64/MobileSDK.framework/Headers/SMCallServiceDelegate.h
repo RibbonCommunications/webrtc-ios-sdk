@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.17.0
+ * @version: 6.18.0
  *
  */
 
@@ -19,6 +19,7 @@
 @class SMNotificationMessage;
 
 @protocol SMCallApplicationDelegate;
+@protocol SMCallDelegate;
 
 /**
  * @brief Call service methods
@@ -69,7 +70,7 @@
  */
 - (void)createOutGoingCall:(nonnull id <SMCallApplicationDelegate>)app
                  andCallId:(nullable NSString *) callId
-             andOriginator:(nonnull SMUriAddress *)originator
+             andOriginator:(nullable SMUriAddress *)originator
              andTerminator:(nonnull SMUriAddress *)terminator
                 completion:(nonnull void (^)(id<SMOutgoingCallDelegate> _Nullable call, SMMobileError  * _Nullable error))callHandler;
 
@@ -84,7 +85,7 @@
  * @since 3.1.4
  */
 - (void)createOutGoingCall:(nonnull id <SMCallApplicationDelegate>)app
-             andOriginator:(nonnull SMUriAddress *)originator
+             andOriginator:(nullable SMUriAddress *)originator
              andTerminator:(nonnull SMUriAddress *)terminator
                 completion:(nonnull void (^)(id<SMOutgoingCallDelegate> _Nullable call, SMMobileError * _Nullable error))callHandler;
 

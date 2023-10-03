@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.17.0
+ * @version: 6.18.0
  *
  */
 
@@ -75,7 +75,7 @@
  *
  * @since 4.2.1.1
  */
-- (void) setId:(NSString *)Id;
+//- (void) setId:(NSString *)Id;
 
 /**
  * @brief Sends the ringing feedback to SPiDR. Needs to be called if Ringing feedback enabled.

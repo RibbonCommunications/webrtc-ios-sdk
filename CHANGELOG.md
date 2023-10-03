@@ -5,6 +5,10 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.18.0 - 2023-03-10
+### Changed
+- CallServices module partially migrated to Swift. `KAE-1541`
+
 ## 6.17.0 - 2023-06-09
 ### Changed
 - CallServices module partially migrated to Swift. `KAE-1536`
