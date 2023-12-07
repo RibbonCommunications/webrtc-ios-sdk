@@ -4,11 +4,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
-
 /**
- *
- * @version: 6.19.0
  * @brief class for media attributes of a Call
+ *
+ * @version: 6.20.0
  * localVideo, holds boolean value that if the local video is activated for sending
  * remoteVideo, holds boolean value that if the remote video is receiving
  * localAudio, holds boolean value that local audio is activated for sending
@@ -19,6 +18,7 @@
  * @since 2.0.0
  * @modified 4.0.1
  */
+__attribute__((objc_runtime_name("SWIFTSMMediaAttributes")))
 @interface SMMediaAttributes : NSObject
 
 /**
@@ -26,7 +26,7 @@
  * @return BOOL
  * @since 3.0.5
  */
-@property (nonatomic, readonly) BOOL localVideo;
+@property (nonatomic) BOOL localVideo;
 
 /**
  * @brief boolean value that if the remote video is receiving
@@ -40,7 +40,7 @@
  * @return BOOL
  * @since 3.0.5
  */
-@property (nonatomic, readonly) BOOL localAudio;
+@property (nonatomic) BOOL localAudio;
 
 /**
  * @brief defines width/height of remote video

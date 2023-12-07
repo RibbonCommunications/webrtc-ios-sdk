@@ -1,7 +1,7 @@
 # Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **Nov 15, 2023**
+Revision Date: **Dec 4, 2023**
 
 ## Mobile SDK overview
 
@@ -18,7 +18,7 @@ The Mobile SDK has the following characteristics:
 
 See [Appendix A: High-level Mobile SDK structure](#appendix-a-high-level-mobile-sdk-structure) for a high-level view of the Mobile SDK and its sub-modules.
 
-The Mobile SDK for iOS is compatible with iOS 9.x-12.x and has been tested on iPhone 4S, 5, 5C, 5S, 6, 6+, 6S, 6S+, 7, 7+, 8, 8+, X, iPad mini, iPad 4, and iPad Air. The SDK supports IPv6 for iOS.
+The Mobile SDK for iOS is compatible with iOS 13.x-17.x and has been tested on iPhone 6S, 7, 7+, 8, X, 11, 11 Pro, iPad mini, and iPad Air. The SDK supports IPv6 for iOS.
 
 ### What's in this document?
 

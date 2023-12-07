@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.19.0
+ * @version: 6.20.0
  *
  */
 
@@ -43,6 +43,6 @@
  *
  * @since 2.0.0
  */
-- (id)initWithDomain:(NSString *)domain code:(SMErrorTypes)code description:(NSString *) descriptionString ;
+- (nonnull id)initWithDomain:(NSString *_Nonnull)domain code:(SMErrorTypes)code description:(NSString *_Nullable) descriptionString ;
 
 @end
