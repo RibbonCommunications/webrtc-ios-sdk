@@ -5,6 +5,8 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.21.1 - 2024-12-01
+
 ## 6.21.0 - 2023-29-12
 ### Changed
 - NotificationEngine module migrated to Swift. `KAE-1521`
