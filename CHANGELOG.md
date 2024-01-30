@@ -5,6 +5,10 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.22.0 - 2024-26-01
+### Fixed
+- Minimum deployment target of Swift Package set to iOS 13. `KAE-1520`
+
 ## 6.21.1 - 2024-12-01
 
 ## 6.21.0 - 2023-29-12
@@ -18,6 +22,7 @@ Ribbon WebRTC iOS SDK change log.
 
 ### Changed
 - CallServices module fully migrated to Swift. `KAE-1543`
+- Minimum deployment target of SDK set to iOS 13. `KAE-1543`
 
 ## 6.19.0 - 2023-15-11
 
