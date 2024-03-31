@@ -5,6 +5,12 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.24.0 - 2024-01-04
+### Changed
+- Copyright notices updated. `KAE-1562`
+- SMWebRTC module migrated to Swift. `KAE-1519`
+- Utilities module migrated to Swift. `KAE-1518`
+
 ## 6.23.0 - 2024-28-02
 
 ## 6.22.0 - 2024-26-01
