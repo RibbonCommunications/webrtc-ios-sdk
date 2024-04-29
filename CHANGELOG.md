@@ -5,6 +5,10 @@ Ribbon WebRTC iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 6.25.0 - 2024-29-04
+### Fixed
+- Video calls crash and screen sharing issues between Ribbon WebRTC JS SDK. `KAE-1565`
+
 ## 6.24.0 - 2024-01-04
 ### Changed
 - Copyright notices updated. `KAE-1562`
