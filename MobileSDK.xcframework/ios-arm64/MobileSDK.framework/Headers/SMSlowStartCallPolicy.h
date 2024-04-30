@@ -1,20 +1,15 @@
 /*
-* COPYRIGHT © 2024 RIBBON COMMUNICATIONS OPERATING COMPANY, INC. ALL RIGHTS RESERVED.
-* This publication and the information contained herein is the property of Ribbon
-* and may not be copied, reproduced or distributed in any form or by any means without
-* the prior written permission of Ribbon.
-*
-* THIS PUBLICATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-* PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
-* FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-* OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE PUBLICATION OR ITS USE.
-*
-* SMSlowStartCallPolicy.h
-*
-* @version: 6.25.0
-*
-*/
+ * Copyright © 2014 GENBAND. All Rights Reserved.
+ *
+ * GENBAND CONFIDENTIAL. All information, copyrights, trade secrets
+ * and other intellectual property rights, contained herein are the property
+ * of GENBAND. This document is strictly confidential and must not be
+ * copied, accessed, disclosed or used in any manner, in whole or in part,
+ * without GENBAND's express written authorization.
+ *
+ * @version: 6.25.1
+ *
+ */
 
 /**
  * @brief enum class that specifies processing policy for slow-start events
