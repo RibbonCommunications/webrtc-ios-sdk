@@ -1,9 +1,9 @@
 # Ribbon WebRTC iOS SDK
 
 <p>
-    <img alt="Cocoapods platforms" src="https://img.shields.io/cocoapods/p/KandyLinkMobileSDK">
+    <img alt="Cocoapods platforms" src="https://img.shields.io/cocoapods/p/RibbonWebRTCSDK">
     <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/RibbonCommunications/webrtc-ios-sdk">
-    <img alt="Cocoapods" src="https://img.shields.io/cocoapods/v/KandyLinkMobileSDK">
+    <img alt="Cocoapods" src="https://img.shields.io/cocoapods/v/RibbonWebRTCSDK">
 </p>
 
 ## Install
@@ -17,7 +17,7 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.25.2'
+    pod 'RibbonWebRTCSDK', '~> 6.26.0'
 end
 
 post_install do |installer|

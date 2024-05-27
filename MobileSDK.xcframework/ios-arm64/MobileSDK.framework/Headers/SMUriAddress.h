@@ -12,7 +12,7 @@
 *
 * SMUriAddress.h
 *
-* @version: 6.25.2
+* @version: 6.26.0
 *
 */
 
@@ -24,6 +24,7 @@
  * request.
  * @since 2.0.0
  **/
+__attribute__((objc_runtime_name("SWIFTSMUriAddress")))
 @interface SMUriAddress : NSObject
 
 /**

@@ -12,7 +12,7 @@
 *
 * SMCodecSet.h
 *
-* @version: 6.25.2
+* @version: 6.26.0
 *
 */
 
@@ -65,6 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Represents Base Codec Object
  * @since 4.5.5
  */
+__attribute__((objc_runtime_name("SWIFTSMCodec")))
 @interface SMCodec : NSObject
 
 @end
@@ -73,6 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Represents Audio Codec Object
  * @since 4.5.5
  */
+__attribute__((objc_runtime_name("SWIFTSMAudioCodec")))
 @interface SMAudioCodec: SMCodec
 
 - (instancetype)init __attribute__((unavailable("Use static initializer withType:")));
@@ -94,6 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Represents Video Codec Object
  * @since 4.5.5
  */
+__attribute__((objc_runtime_name("SWIFTSMVideoCodec")))
 @interface SMVideoCodec: SMCodec
 
 - (instancetype)init __attribute__((unavailable("Use static initializer withType:")));
@@ -118,6 +121,7 @@ NS_ASSUME_NONNULL_END
  *
  * @since 3.0.5
  */
+__attribute__((objc_runtime_name("SWIFTSMCodecSet")))
 @interface SMCodecSet : NSObject
 
 /**

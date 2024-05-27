@@ -12,7 +12,7 @@
 *
 * SMCallApplicationDelegate.h
 *
-* @version: 6.25.2
+* @version: 6.26.0
 *
 */
 
