@@ -12,7 +12,7 @@
 *
 * SMCodecSet.h
 *
-* @version: 6.26.0
+* @version: 6.27.0
 *
 */
 
