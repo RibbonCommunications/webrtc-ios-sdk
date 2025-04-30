@@ -12,7 +12,7 @@
 *
 * SMServiceTypes.h
 *
-* @version: 6.32.0
+* @version: 6.34.0
 *
 */
 
