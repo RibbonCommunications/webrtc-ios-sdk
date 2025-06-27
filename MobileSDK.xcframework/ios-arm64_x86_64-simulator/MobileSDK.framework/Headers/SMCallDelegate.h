@@ -142,7 +142,7 @@
 - (void) unHoldCall;
 
 /**
- * @brief Sends the given custom SIP headers to SPiDR server.
+ * @brief Sends the given custom SIP headers to WebRTC GW server.
  *
  * @param customParameters key-value pairs of custom SIP headers to send
  * @since 4.5.0
@@ -355,7 +355,7 @@
 /**
  * @brief Gets id value of call
  *
- * @return Id which is not related with Spidr Session Id
+ * @return Id which is not related with WebRTC GW Session Id
  *
  * @since 4.2.1.1
  */

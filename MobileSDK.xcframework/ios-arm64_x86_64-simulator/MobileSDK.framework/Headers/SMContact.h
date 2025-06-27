@@ -27,7 +27,7 @@
 @interface SMContact : NSObject
 
 /**
- * Source of contact such as SPiDR, Facebook, LinkedIn .. etc.
+ * Source of contact such as WebRTC GW, Facebook, LinkedIn .. etc.
  * @since 2.0.0
  */
 @property (strong, nonatomic, nullable) NSString* sources;

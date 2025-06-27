@@ -48,7 +48,7 @@
 - (void) acceptCall: (BOOL)isVideoEnabled;
 
 /**
- * @brief Accepts the incoming call and sends the given custom SIP headers to SPiDR server.
+ * @brief Accepts the incoming call and sends the given custom SIP headers to WebRTC GW server.
  * @param isVideoEnabled indicates if video is allowed or not
  * @param customParameters key-value pairs of custom SIP headers to send
  * @since 4.5.0
@@ -76,14 +76,14 @@
 /**
  * @brief Sets Id value of Incoming call
  *
- * @param Id Indicates custom identifier  which is not related with Spidr Session Id
+ * @param Id Indicates custom identifier  which is not related with WebRTC GW Session Id
  *
  * @since 4.2.1.1
  */
 //- (void) setId:(NSString *)Id;
 
 /**
- * @brief Sends the ringing feedback to SPiDR. Needs to be called if Ringing feedback enabled.
+ * @brief Sends the ringing feedback to WebRTC GW. Needs to be called if Ringing feedback enabled.
  * @since 4.3.2
  */
 - (void) sendRingingFeedback;

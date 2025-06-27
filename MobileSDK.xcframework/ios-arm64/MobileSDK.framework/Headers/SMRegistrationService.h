@@ -43,7 +43,7 @@ __attribute__((objc_runtime_name("SWIFTSMRegistrationService")))
  * After registration request succeeded and notification channel is connected completion block will be called without error.
  * During registration process, registration registrationStateChanged of RegistrationApplicationDelegate will be triggered after registration request and notificationConnectionStateChanged of RegistrationApplicationDelegate will be triggered after notification connection is established.
  *
- * @param expirationTime, Expiration time for registration in seconds. This value is sent to SPiDR server to set the registration expiration value and SPiDR sends the suitable expiration value back in registration request response. If this value exceeds the maximum supported expiration time in SPiDR, it will send the maximum value of SPiDR server that is set. This value is generally 3600sec and the final value can be gathered by calling getExpirationTime method.
+ * @param expirationTime, Expiration time for registration in seconds. This value is sent to WebRTC GW server to set the registration expiration value and WebRTC GW sends the suitable expiration value back in registration request response. If this value exceeds the maximum supported expiration time in WebRTC GW, it will send the maximum value of WebRTC GW server that is set. This value is generally 3600sec and the final value can be gathered by calling getExpirationTime method.
  * @param completionBlock, block implementation that will be used by the registration service to trigger callback events. Listener can be null if user don't care the callbacks or failure reasons.
  *
  * @since 5.14.0
@@ -56,8 +56,8 @@ __attribute__((objc_runtime_name("SWIFTSMRegistrationService")))
  * After registration request succeeded and notification channel is connected completion block will be called without error.
  * During registration process, registration registrationStateChanged of RegistrationApplicationDelegate will be triggered after registration request and notificationConnectionStateChanged of RegistrationApplicationDelegate will be triggered after notification connection is established.
  *
- * @param expirationTime, Expiration time for registration in seconds. This value is sent to SPiDR server to set the registration expiration value and SPiDR sends the suitable expiration value back in registration request response. If this value exceeds the maximum supported expiration time in SPiDR, it will send the maximum value of SPiDR server that is set. This value is generally 3600sec and the final value can be gathered by calling getExpirationTime method.
- * @param hmacToken, HMAC token to authorize subscription request to the SPiDR server. This token must be a valid token obtained from the SPiDR server.
+ * @param expirationTime, Expiration time for registration in seconds. This value is sent to WebRTC GW server to set the registration expiration value and WebRTC GW sends the suitable expiration value back in registration request response. If this value exceeds the maximum supported expiration time in WebRTC GW, it will send the maximum value of WebRTC GW server that is set. This value is generally 3600sec and the final value can be gathered by calling getExpirationTime method.
+ * @param hmacToken, HMAC token to authorize subscription request to the WebRTC GW server. This token must be a valid token obtained from the WebRTC GW server.
  * @param completionBlock, block implementation that will be used by the registration service to trigger callback events. Listener can be null if user don't care the callbacks or failure reasons.
  *
  * @since 5.19.0
@@ -71,7 +71,7 @@ __attribute__((objc_runtime_name("SWIFTSMRegistrationService")))
  * During registration process, registration registrationStateChanged of RegistrationApplicationDelegate will be triggered after registration request and notificationConnectionStateChanged of RegistrationApplicationDelegate will be triggered after notification connection is established.
  *
  * @param serviceTypes, service list that application will be registered to
- * @param expirationTime, Expiration time for registration in seconds. This value is sent to SPiDR server to set the registration expiration value and SPiDR sends the suitable expiration value back in registration request response. If this value exceeds the maximum supported expiration time in SPiDR, it will send the maximum value of SPiDR server that is set. This value is generally 3600sec and the final value can be gathered by calling getExpirationTime method.
+ * @param expirationTime, Expiration time for registration in seconds. This value is sent to WebRTC GW server to set the registration expiration value and WebRTC GW sends the suitable expiration value back in registration request response. If this value exceeds the maximum supported expiration time in WebRTC GW, it will send the maximum value of WebRTC GW server that is set. This value is generally 3600sec and the final value can be gathered by calling getExpirationTime method.
  * @param subscriptionId , subscription id to use unregistration and renew registration
  * @param notificationChannelId , notification channel id to use websocket connection
  * @param completionBlock, block implementation that will be used by the registration service to trigger callback events. Listener can be null if user don't care the callbacks or failure reasons.
@@ -93,7 +93,7 @@ __attribute__((objc_runtime_name("SWIFTSMRegistrationService")))
 - (void) unRegisterFromServerWithHandler:(void (^_Nullable)(SMMobileError * _Nullable error))completionBlock;
 
 /**
- * @brief Gives the expiration time for registration in seconds. Since the exact value is determined by SPiDR server, this method should be called after registration succeeded.
+ * @brief Gives the expiration time for registration in seconds. Since the exact value is determined by WebRTC GW server, this method should be called after registration succeeded.
  *
  * @return NSInteger, registration expiration time in seconds.
  */

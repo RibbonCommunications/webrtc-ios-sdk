@@ -76,7 +76,7 @@ __attribute__((objc_runtime_name("SWIFTSMCallState")))
  *
  * @param type of CallState
  * @param reason of CallState transition
- * @param statusCode HTTP code comes from SPiDR for state transition
+ * @param statusCode HTTP code comes from WebRTC GW for state transition
  * @return SMCallState object
  * @since 3.0.5
  */

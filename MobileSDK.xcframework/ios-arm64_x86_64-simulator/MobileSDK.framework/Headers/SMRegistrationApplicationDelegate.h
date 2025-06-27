@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * This method will be call, if any internal error occurs when MobileSDK
- * sends a request to SPiDR.
+ * sends a request to WebRTC GW.
  * This method will no longer available in version 6.11.0.
  *
  * @param error SMMobileError
