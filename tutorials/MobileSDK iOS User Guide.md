@@ -1,7 +1,7 @@
 # Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **Apr 30, 2025**
+Revision Date: **Jun 27, 2025**
 
 ## Mobile SDK overview
 
@@ -2553,9 +2553,19 @@ SMServiceProvider.getInstance().getCallService().isVoipAudioEnabled = true
 ```
 <!-- tabs:end -->
 
-#### Send custom parameters for a call
+#### Custom Parameters
 
-If desired, custom SIP Headers can be send while initiating call and/or during the mid-call events. Parameters should contain key-value pairs that are provisioned by the backend.
+Custom SIP headers can be used to convey additional information to a SIP endpoint.
+
+Any SIP header can be used as a custom parameter, such as X-Headers or proprietary headers. However, if the defined header name conflicts with another SIP header name in the SIP message, the existing SIP header will be removed and the application's custom SIP header will be added to the message.
+
+These parameters must be configured on the Ribbon WebRTC Gateway prior to making a REST request, otherwise the request will fail when trying to include the parameters. The Ribbon WebRTC Gateway does not impose limitations on the length of a header. See the Gateway documentation for more information.
+
+These parameters can be provided in the call establishment APIs to be included during call establishment. They can also be set on the call after it is established using the `setCustomParameters` API, then sent using the `sendCustomParameters` API.
+
+Custom parameters may be received anytime throughout the duration a call. A remote endpoint may send custom headers when starting a call, answering a call, or during call updates such as hold/unhold and addition/removal of media in the call. When these custom headers are received, the SDK will provide them via the appropriate callback methods.
+
+Custom parameters set on a call are stored as part of the call data. These are the parameters that will be sent to the remote endpoint of the call. Parameters received from a call are not stored as part of the call data and are only provided via the callback methods.
 
 ###### Example: Sending Custom Parameters while establishing call
 
@@ -2571,7 +2581,12 @@ If desired, custom SIP Headers can be send while initiating call and/or during t
                                                             completion:^(id<SMOutgoingCallDelegate> call, SMMobileError *error) {
 
         if (!error) {
-            NSDictionary *headers = @{@"key":@"value"};
+            // Specify custom SIP headers to be sent when making a call
+            NSDictionary *headers = @{
+                @"X-GPS": @"51.759028,-1.213278",
+                @"X-Caller-ID": @"Coombs,Ernie",
+                @"User-to-User": @"48656c6c6f2c20576f726c6421;encoding=hex"
+            };
             [call establishCall:videoEnabled withCustomParameters:headers];
         }
     }];
@@ -2584,7 +2599,12 @@ If desired, custom SIP Headers can be send while initiating call and/or during t
 func startCallWithTerminator(term: SMUriAddress, videoEnabled:Bool) {
     SMServiceProvider.getInstance().getCallService().createOutGoingCall(self, andTerminator:targetAddress) { (call, error) in
         if error == nil {
-            let headers = ["key":"value"]
+            // Specify custom SIP headers to be sent when making a call
+            let headers = [
+                "X-GPS": "51.759028,-1.213278",
+                "X-Caller-ID": "Coombs,Ernie", 
+                "User-to-User": "48656c6c6f2c20576f726c6421;encoding=hex"
+            ]
             call.establishCall(videoEnabled, withCustomParameters:headers)
         }
 }
