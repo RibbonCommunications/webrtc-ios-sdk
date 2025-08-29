@@ -17,7 +17,7 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.36.0'
+    pod 'RibbonWebRTCSDK', '~> 6.37.0'
 end
 
 post_install do |installer|
