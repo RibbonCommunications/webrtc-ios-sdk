@@ -4,6 +4,11 @@ Ribbon WebRTC iOS SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+
+## 6.38.0 - 2024-02-10
+### Fixed
+- Call Me calls connection issue. `KAE-1608`
+
 ## 6.37.0 - 2025-29-08
 
 ## 6.36.0 - 2025-31-07

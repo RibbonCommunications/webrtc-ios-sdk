@@ -17,7 +17,7 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.37.0'
+    pod 'RibbonWebRTCSDK', '~> 6.38.0'
 end
 
 post_install do |installer|
@@ -71,10 +71,3 @@ Compatible Ribbon WebRTC Gateway Server versions :
 * WebRTC Gateway 4.10.0
 
 * WebRTC Gateway 4.9.1
-
-Tested on :
-
-* iPhone 6S, 7, 7+, 8, X, 11, 11 Pro, iPad mini, and iPad Air
-
-## Known Issues
-
