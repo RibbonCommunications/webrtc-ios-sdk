@@ -1,7 +1,7 @@
 # Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **Oct 02, 2025**
+Revision Date: **Oct 30, 2025**
 
 ## Mobile SDK overview
 
