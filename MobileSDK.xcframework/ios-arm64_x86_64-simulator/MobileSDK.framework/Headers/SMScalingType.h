@@ -12,7 +12,7 @@
 *
 * SMScalingType.h
 *
-* @version: 6.35.0
+* @version: 6.39.0
 *
 */
 
