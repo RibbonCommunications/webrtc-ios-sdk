@@ -12,7 +12,7 @@
 *
 * SMMobileError.h
 *
-* @version: 6.39.0
+* @version: 6.41.0
 *
 */
 
@@ -50,5 +50,13 @@
  * @since 2.0.0
  */
 - (nonnull id)initWithDomain:(NSString *_Nonnull)domain code:(SMErrorTypes)code description:(NSString *_Nullable) descriptionString ;
+
+/**
+ * Creates an error message with specified description message using a raw status code.
+ *
+ * This initializer is useful when SPiDR returns a numeric `statusCode` that is not
+ * represented in `SMErrorTypes` (e.g. `REST_REQUEST_PENDING_NOTIFICATION` = 49).
+ */
+- (nonnull id)initWithDomain:(NSString *_Nonnull)domain statusCode:(NSInteger)statusCode description:(NSString *_Nullable)descriptionString;
 
 @end

@@ -12,7 +12,7 @@
 *
 * MobileSDK.h
 *
-* @version: 6.39.0
+* @version: 6.41.0
 *
 */
 
