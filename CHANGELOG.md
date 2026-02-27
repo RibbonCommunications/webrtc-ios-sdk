@@ -4,6 +4,10 @@ Ribbon WebRTC iOS SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+## 6.42.0 - 2026-27-02
+### Fixed
+- No Remote Video Consultative Transfer `KAE-1195`
+
 ## 6.41.0 - 2026-29-01
 ### Added
 - WebRTC Upgrade to M142 `KAE-1626`
