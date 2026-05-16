@@ -1,0 +1,19 @@
+name: Codex macOS Validation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ios-build:
+    name: iOS package build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Resolve packages
+        run: swift package resolve
+
+      - name: Build iOS package
+        run: xcodebuild -scheme "MobileSDK" -destination "generic/platform=iOS" build
