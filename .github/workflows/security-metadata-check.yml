@@ -1,0 +1,128 @@
+name: Security metadata check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  security-metadata-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify package metadata and release artifacts
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib
+          import re
+          import sys
+          import zipfile
+
+          failures = []
+
+          def text(path):
+              return Path(path).read_text(encoding="utf-8")
+
+          def require(condition, message):
+              if not condition:
+                  failures.append(message)
+
+          def sha256(path):
+              return hashlib.sha256(Path(path).read_bytes()).hexdigest().upper()
+
+          package = text("Package.swift")
+          podspec = text("RibbonWebRTCSDK.podspec")
+          readme = text("README.md")
+          changelog = text("CHANGELOG.md")
+          license_text = text("LICENSE.md")
+          redactor = text("Sources/RibbonWebRTC/PIIRedactingLoggingDelegate.swift")
+
+          require('branch: "master"' not in package, "Package.swift must not use a floating master dependency.")
+          require('exact: "0.118.0"' in package, "Package.swift must pin RibbonWebRTC exactly to 0.118.0.")
+          require("s.dependency  'RibbonWebRTC' , '= 0.118.0'" in podspec, "Podspec must pin RibbonWebRTC exactly to 0.118.0.")
+          require(":type => 'Proprietary'" in podspec and ":file => 'LICENSE.md'" in podspec, "Podspec license must match LICENSE.md.")
+          require(":type => 'MIT'" not in podspec and "mit-license.txt" not in podspec, "Podspec must not declare the old MIT license metadata.")
+          require('Select "Branch" with "master"' not in readme, "README must not instruct SPM users to select master.")
+          require("pod 'RibbonWebRTCSDK', '= 6.43.0'" in readme, "README CocoaPods example must pin 6.43.0 exactly.")
+          require("Security and dependency note" in readme, "README must keep the dependency security note.")
+          require("http://" not in changelog, "CHANGELOG must not use http links.")
+          require("Distribution metadata correction" in changelog, "CHANGELOG must document the metadata correction.")
+          require("(?:proxy-)?authorization" in redactor and "basic|bearer|digest|negotiate|ntlm" in redactor, "Log redactor must cover Authorization and Proxy-Authorization schemes.")
+
+          common_secret_markers = (
+              "BEGIN PRIVATE KEY",
+              "BEGIN RSA PRIVATE KEY",
+              "BEGIN OPENSSH PRIVATE KEY",
+              "AKIA",
+              "ghp_",
+              "xoxb-",
+              "sk_live_",
+              "AIza",
+          )
+          reviewed_text_paths = [Path("Sources/RibbonWebRTC/PIIRedactingLoggingDelegate.swift"), Path("LICENSE.md")]
+          reviewed_text_paths.extend(Path("MobileSDK.xcframework/ios-arm64/MobileSDK.framework/Headers").glob("*.h"))
+          for path in reviewed_text_paths:
+              body = path.read_text(encoding="utf-8", errors="ignore")
+              for marker in common_secret_markers:
+                  require(marker not in body, f"Common hard-coded secret marker found in {path}: {marker}")
+
+          patterns = [
+              (re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b"), "<redacted-email>"),
+              (re.compile(r"(?i)\b((?:proxy-)?authorization)\s*[:=]\s*(?:basic|bearer|digest|negotiate|ntlm)\s+[^\s,;\]\}\)]+"), r"\1=<redacted>"),
+              (re.compile(r"(?i)\b(bearer\s+)[A-Z0-9._~+/\-=]+"), r"\1<redacted-token>"),
+              (re.compile(r"(?i)\b([A-Z0-9_]*(?:password|passcode|token|secret|authorization|auth|api[_-]?key)[A-Z0-9_]*)\s*[:=]\s*[^\s,;\]\}\)]+"), r"\1=<redacted>"),
+              (re.compile(r"(?i)\b(firstName|lastName|nickName|userName|emailAddress|homePhone|mobilePhone|workPhone|pager|fax|photoUrl|primaryContact)\s*[:=]\s*[^\s,;\]\}\)]+"), r"\1=<redacted>"),
+              (re.compile(r"(?<![\w@])\+?\d[\d\s().-]{7,}\d(?![\w@])"), "<redacted-phone>"),
+          ]
+          redaction_cases = [
+              ("Authorization: Bearer abc.def-123", ("abc.def-123",)),
+              ("Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==", ("QWxh",)),
+              ("Proxy-Authorization: Digest abcdef123456", ("abcdef123456",)),
+              ("password: hunter2 token=abc123 userName=john emailAddress=john@example.com mobilePhone=+1 555 222 3333", ("hunter2", "abc123", "john@example", "555")),
+              ("defaultICEPassword=turn-secret defaultICEUsername=user", ("turn-secret",)),
+              ("api-key: sk_live_123456 refreshToken: abcdef", ("sk_live", "abcdef")),
+          ]
+          for original, forbidden_fragments in redaction_cases:
+              redacted = original
+              for pattern, replacement in patterns:
+                  redacted = pattern.sub(replacement, redacted)
+              for fragment in forbidden_fragments:
+                  require(fragment not in redacted, f"Redaction test leaked {fragment!r}: {redacted}")
+
+          expected_hashes = {
+              "dist/MobileSDK_6.43.0.zip": "18205775D64214FB36BDA49388783EA9B7F42303C67E15FCF7ED1BED64AC29F9",
+              "MobileSDK.xcframework/ios-arm64/MobileSDK.framework/MobileSDK": "3FC30BF8CA89E090B4B1D50573FD5683DC59C10B280D1EF6DB144D6AED9A8516",
+              "MobileSDK.xcframework/ios-arm64_x86_64-simulator/MobileSDK.framework/MobileSDK": "613E7ADF2002CB23CCD2FE587966FD82C3F2B58510BE1F1FD9CECFEC27F033D1",
+          }
+          for path, expected in expected_hashes.items():
+              require(Path(path).is_file(), f"Expected artifact missing: {path}")
+              actual = sha256(path)
+              require(actual == expected, f"Unexpected SHA256 for {path}: {actual}")
+
+          with zipfile.ZipFile("dist/MobileSDK_6.43.0.zip") as archive:
+              entries = archive.namelist()
+              require(len(entries) == 320, f"Unexpected zip entry count: {len(entries)}")
+              require("MobileSDK_6.43.0/MobileSDK.xcframework/Info.plist" in entries, "Zip is missing MobileSDK.xcframework/Info.plist.")
+              require("MobileSDK_6.43.0/WebRTC.xcframework/LICENSE.md" in entries, "Zip is missing WebRTC.xcframework/LICENSE.md.")
+
+          arm_headers = sorted(Path("MobileSDK.xcframework/ios-arm64/MobileSDK.framework/Headers").glob("*.h"))
+          sim_headers_dir = Path("MobileSDK.xcframework/ios-arm64_x86_64-simulator/MobileSDK.framework/Headers")
+          for arm_header in arm_headers:
+              sim_header = sim_headers_dir / arm_header.name
+              require(sim_header.is_file(), f"Simulator header missing: {arm_header.name}")
+              require(sha256(arm_header) == sha256(sim_header), f"Header mismatch between arm64 and simulator: {arm_header.name}")
+
+          if failures:
+              print("Security metadata check failed:")
+              for failure in failures:
+                  print(f"- {failure}")
+              sys.exit(1)
+
+          print("Security metadata check passed.")
