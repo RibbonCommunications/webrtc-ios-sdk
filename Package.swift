@@ -14,11 +14,14 @@ let package = Package(
             targets: ["RibbonWebRTC","Dependencies","MobileSDK"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/RibbonCommunications/RibbonWebRTC.git", branch: "master"),
+        .package(url: "https://github.com/RibbonCommunications/RibbonWebRTC.git", exact: "0.118.0"),
     ],
     targets: [
         .target(name: "RibbonWebRTC",
-                dependencies: [.product(name: "WebRTC", package: "RibbonWebRTC")]),
+                dependencies: [
+                    .product(name: "WebRTC", package: "RibbonWebRTC"),
+                    "MobileSDK"
+                ]),
         
             .target(
                 name: "Dependencies",

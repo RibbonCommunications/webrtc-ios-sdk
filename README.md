@@ -17,7 +17,7 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-    pod 'RibbonWebRTCSDK', '~> 6.43.0'
+    pod 'RibbonWebRTCSDK', '= 6.43.0'
 end
 
 post_install do |installer|
@@ -42,7 +42,11 @@ end
 #### Swift Package Manager
 1. File > Swift Packages > Add Package Dependency
 2. Add https://github.com/RibbonCommunications/webrtc-ios-sdk.git
-3. Select "Branch" with "master"
+3. Select a version-based requirement and use `6.43.0`
+
+### Security and dependency note
+
+This package is pinned to the published `RibbonWebRTC` `0.118.0` dependency. Do not treat the WebRTC M142 entry in the change log as an effective dependency upgrade unless a matching `RibbonWebRTC` release or pinned revision is published and the CocoaPods and Swift Package Manager metadata are updated together.
 
 ### Manual
 
