@@ -2,8 +2,13 @@
 
 Ribbon WebRTC iOS SDK change log.
 
-- This project adheres to [Semantic Versioning](http://semver.org/).
-- This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+- This project adheres to [Semantic Versioning](https://semver.org/).
+- This change log follows [keepachangelog.com](https://keepachangelog.com/) recommendations.
+
+## Unreleased
+### Security
+- Distribution metadata correction: CocoaPods and Swift Package Manager now pin `RibbonWebRTC` exactly to the verified published `0.118.0` dependency, and the documentation warns that the M142 note is not an effective WebRTC dependency upgrade until matching dependency metadata is published.
+
 ## 6.43.0 - 2026-31-03
 ### Fixed
 - Blind transfer to PSTN failed `KAE-1496`
