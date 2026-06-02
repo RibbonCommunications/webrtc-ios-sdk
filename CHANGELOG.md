@@ -4,6 +4,8 @@ Ribbon WebRTC iOS SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+## 6.44.0 - 2026-02-06
+
 ## 6.43.0 - 2026-31-03
 ### Fixed
 - Blind transfer to PSTN failed `KAE-1496`

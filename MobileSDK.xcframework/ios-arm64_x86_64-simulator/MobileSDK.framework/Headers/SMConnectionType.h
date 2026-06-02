@@ -12,7 +12,7 @@
 *
 * SMConnectionType.h
 *
-* @version: 6.43.0
+* @version: 6.44.0
 *
 */
 
