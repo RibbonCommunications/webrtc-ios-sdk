@@ -18,7 +18,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "RibbonWebRTC",
-                dependencies: [.product(name: "WebRTC", package: "RibbonWebRTC")]),
+                dependencies: [
+                    .product(name: "WebRTC", package: "RibbonWebRTC"),
+                    "MobileSDK"
+                ]),
         
             .target(
                 name: "Dependencies",
