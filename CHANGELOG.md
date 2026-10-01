@@ -4,6 +4,10 @@ Ribbon WebRTC iOS SDK change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
+## 6.45.0 - 2026-24-09
+### Fixed
+- Dead silence with early in-dialog SDP offer `KAE-1668`
+
 ## 6.44.0 - 2026-02-06
 
 ## 6.43.0 - 2026-31-03
